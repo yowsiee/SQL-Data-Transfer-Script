@@ -1,5 +1,21 @@
 # SQL-Data-Transfer-Script
 
+
+**Project Overview**:
+Each Client is associated with Various Custom fields which are additional fields that is affiliated with client. Our problem is a complex one, as we’re dealing with a non-standard database design. Basically we are trying to map column names from one table (tblLookUfieldNames) to another (tblClientUfields), where the former holds the actual column names of the latter.
+
+Given the complexity and the lack of standardization, there's no direct way to resolve this using SQL only unfortunately, Therefore we have to build an ETL script that does the following:
+
+Fetch the column names and their corresponding values from tblLookUfieldNames, then use that mapping to execute queries on tblClientUfields. 
+
+Once this Step 1 is completed, we need to create a table with our new form data in the Datawarehouse and Populate that table with the corresponding data in the ETL script. The creation of the Table can be done in the Script as well.
+
+Once you create the table, based on the column values (I suggest to run the script first, which will output a CSV file, so it will give you an idea what the columns are and the data in it), Populate the table with the data.
+
+Schedule the Script to run every hour 
+
+See Script below: tblClientUfields.js
+
 **Script Overview**:
 The script is designed to perform data extraction and transformation tasks between two SQL Server databases. It utilizes the Node.js runtime environment and several libraries, including `mssql` for database connectivity and `csv-writer` for CSV file writing. Below is a breakdown of its main components and purpose:
 
